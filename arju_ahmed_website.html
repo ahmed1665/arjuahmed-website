@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arju Ahmed | Personal Portfolio & Blog</title>
+  <meta name="description" content="Official personal site of Arju Ahmed — portfolio, daily activities, gallery and contact." />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --accent:#e63946; /* red accent inspired by your photo */
+      --card:#f8fafc;
+      --glass: rgba(255,255,255,0.6);
+      --max-width:1100px;
+      --radius:14px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#fff 0%, #fff 55%, #f7f7f8 100%);color:var(--text);}
+    a{color:var(--accent);text-decoration:none}
+    header{background:var(--accent);color:white;padding:18px 20px;}
+    .container{max-width:var(--max-width);margin:0 auto;padding:28px}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .logo{display:flex;align-items:center;gap:14px;font-weight:700}
+    .logo .mark{width:44px;height:44px;border-radius:8px;background: white;display:grid;place-items:center;color:var(--accent);font-weight:800}
+    nav a{color:white;margin:0 10px;font-weight:600}
+    .hero{display:flex;gap:32px;align-items:center;padding:48px 0}
+    .hero .left{flex:1}
+    .hero h1{margin:0;font-size:34px;line-height:1.05}
+    .hero p{margin-top:14px;color:var(--muted)}
+    .btn{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--text);color:white;font-weight:700}
+    .profile{width:220px;border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.12);}
+    /* layout */
+    .grid{display:grid;grid-template-columns:2fr 1fr;gap:28px}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(15,23,42,0.04)}
+    h2{margin:0 0 8px 0}
+    .posts{display:flex;flex-direction:column;gap:12px}
+    .post{padding:12px;border-radius:10px;background:#fff;border:1px solid #eef2f7}
+    .meta{color:var(--muted);font-size:13px}
+    /* gallery */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .gallery img{width:100%;height:120px;object-fit:cover;border-radius:8px}
+    /* contact form */
+    form{display:grid;gap:10px}
+    input,textarea{padding:10px;border-radius:8px;border:1px solid #e6edf3}
+    /* footer */
+    footer{padding:24px 0;color:var(--muted);text-align:center;margin-top:28px}
+    /* responsive */
+    @media(max-width:900px){
+      .grid{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      .hero{flex-direction:column;align-items:flex-start}
+      .profile{width:160px}
+      nav a{display:none}
+    }
+    /* small helpers */
+    .pill{display:inline-block;background:rgba(0,0,0,0.04);padding:6px 10px;border-radius:999px;font-weight:600}
+    .muted{color:var(--muted)}
+    .hidden{display:none}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <div class="mark">A</div>
+        <div>
+          <div>Arju Ahmed</div>
+          <div style="font-size:12px;opacity:.9">Personal Portfolio & Daily Blog</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#blog">Daily</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="home">
+    <section class="hero">
+      <div class="left">
+        <h1>Hello — I'm <span style="color:var(--accent)">Arju Ahmed</span></h1>
+        <p>I share daily updates about my projects, learning, and life. This site is a simple, easy-to-edit portfolio and blog where you can find my photos, notes, and ways to contact me.</p>
+        <div style="margin-top:18px">
+          <a class="btn" href="#blog">Read My Daily Posts</a>
+          <a style="margin-left:12px" href="#contact">Contact Me</a>
+        </div>
+      </div>
+      <div class="profile card">
+        <!-- Replace the image src with your portrait file name -->
+        <img src="profile.jpg" alt="Arju Ahmed" style="width:100%;display:block;">
+      </div>
+    </section>
+
+    <div class="grid">
+      <div>
+        <section class="card" id="about">
+          <h2>About Me</h2>
+          <p class="muted">A quick intro — edit this section to add your education, skills, and what you're working on.</p>
+          <ul>
+            <li><strong>Field:</strong> Electrical & VLSI / Power Systems (edit as required)</li>
+            <li><strong>Interests:</strong> Circuit design, research, problem solving</li>
+            <li><strong>Location:</strong> Bangladesh</li>
+          </ul>
+        </section>
+
+        <section class="card" id="blog" style="margin-top:18px">
+          <h2>Daily Activities / Blog</h2>
+          <p class="muted">Use this area to post quick updates. Each post shows the date and a short excerpt. Click "New Post" to create an entry (simple JS below handles local posts for demo).</p>
+
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <input id="postInput" placeholder="Write a short update..." style="flex:1;padding:10px;border-radius:10px;border:1px solid #e6edf3">
+            <button onclick="addPost()" class="btn">New Post</button>
+          </div>
+
+          <div class="posts" id="postsList" style="margin-top:14px">
+            <!-- dynamic posts appear here -->
+          </div>
+        </section>
+
+        <section class="card" id="gallery" style="margin-top:18px">
+          <h2>Gallery</h2>
+          <p class="muted">Upload photos to the <code>/images</code> folder and add references here. Example placeholders below.</p>
+          <div class="gallery" style="margin-top:8px">
+            <img src="images/photo1.jpg" alt="photo1">
+            <img src="images/photo2.jpg" alt="photo2">
+            <img src="images/photo3.jpg" alt="photo3">
+            <img src="images/photo4.jpg" alt="photo4">
+            <img src="images/photo5.jpg" alt="photo5">
+            <img src="images/photo6.jpg" alt="photo6">
+          </div>
+        </section>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h3>Quick Info</h3>
+          <p class="muted">Contact & highlights at a glance.</p>
+          <p><strong>Email:</strong> <a href="mailto:you@example.com">you@example.com</a></p>
+          <p><strong>Phone:</strong> +880 1XXXXXXXXX</p>
+          <p><strong>Looking for:</strong> Jobs in Power, VLSI, Research</p>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <h3>Skills</h3>
+          <p class="muted">A quick skillset overview.</p>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">
+            <span class="pill">Circuit Analysis</span>
+            <span class="pill">Power Systems</span>
+            <span class="pill">VLSI Basics</span>
+            <span class="pill">MATLAB / SPICE</span>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <h3>Recent Posts</h3>
+          <div class="post"><div class="meta">2025-10-01</div><div>Started learning advanced power protection topics.</div></div>
+          <div class="post" style="margin-top:8px"><div class="meta">2025-09-18</div><div>Uploaded solved questions for DC circuits.</div></div>
+        </div>
+      </aside>
+    </div>
+
+    <section class="card" id="contact" style="margin-top:18px">
+      <h2>Contact</h2>
+      <p class="muted">Use the form to send a message — the example below just demonstrates structure. Hook it up to a server-side endpoint when ready.</p>
+      <form onsubmit="event.preventDefault();alert('This demo form does not send email. Replace with your backend endpoint.');">
+        <input placeholder="Your name" required />
+        <input type="email" placeholder="Your email" required />
+        <textarea rows="4" placeholder="Message"></textarea>
+        <div style="display:flex;gap:10px;align-items:center">
+          <button class="btn" type="submit">Send Message</button>
+          <div class="muted">Or email: <a href="mailto:you@example.com">you@example.com</a></div>
+        </div>
+      </form>
+    </section>
+
+    <footer>
+      <div class="muted">© <span id="year"></span> Arju Ahmed — Built with ❤️. Edit this template any time.</div>
+    </footer>
+  </main>
+
+  <script>
+    // Small demo: store daily posts in localStorage (works in your browser)
+    const postsKey = 'arju_posts_v1';
+    function loadPosts(){
+      const raw = localStorage.getItem(postsKey);
+      if(!raw) return [];
+      try{return JSON.parse(raw)}catch(e){return []}
+    }
+    function savePosts(arr){localStorage.setItem(postsKey,JSON.stringify(arr))}
+    function renderPosts(){
+      const list = document.getElementById('postsList');
+      list.innerHTML='';
+      const posts = loadPosts().slice().reverse();
+      if(posts.length===0){list.innerHTML='<div class="muted">No posts yet — write your first update above.</div>';return}
+      posts.forEach(p=>{
+        const d = document.createElement('div');d.className='post';
+        d.innerHTML = `<div class="meta">${p.date}</div><div style="margin-top:6px">${escapeHtml(p.text)}</div>`;
+        list.appendChild(d);
+      })
+    }
+    function addPost(){
+      const input = document.getElementById('postInput');
+      const text = input.value.trim();
+      if(!text) return alert('Write something first.');
+      const posts = loadPosts();
+      posts.push({date:new Date().toLocaleString(), text});
+      savePosts(posts);
+      input.value='';
+      renderPosts();
+    }
+    function escapeHtml(s){return s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;')}
+    document.getElementById('year').textContent = new Date().getFullYear();
+    renderPosts();
+  </script>
+</body>
+</html>
